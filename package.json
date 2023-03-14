@@ -1,0 +1,26 @@
+{
+  "name": "51135-backend-serverexpress",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jazmingv/51135-Backend-serverExpress.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jazmingv/51135-Backend-serverExpress/issues"
+  },
+  "homepage": "https://github.com/Jazmingv/51135-Backend-serverExpress#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "nodemon": "^2.0.21"
+  }
+}
