@@ -1,27 +1,28 @@
 import express from 'express';
+import { ProductManager } from './productManager';
 
-// declaramos express
-const app = express();
+const APP = express();
 const PORT = 8080;
 
-app.use(express.urlencoded({ extended: true }));
+APP.use(express.urlencoded({ extended: true }));
+APP.use(express.json());
 
-app.get('/', (req, res) => {
+APP.get('/', (req, res) => {
     res.send(`Hola Gasty! Este es el desafío de la Clase N°6!`)
 })
 
-//  req.query
-
-const consultas = []
-app.get('/ejemploQueries/query', (request, response) => {
-    let { nombre, apellido, edad } = request.query;
-    consultas.push(request.query)
-    response.send(consultas);
+APP.get('/products', (request, response) => {
+    let { limit } = request.query;
+    let productList;
+    if (!limit) {
+        productList = new ProductManager().getProducts();
+    } else {
+        productList = new ProductManager().getProductsWithLimit(limit);
+    }
+    response.send(productList);
 });
 
 
-
-
-app.listen(PORT, () => {
-    console.log(`Server run on port: ${PORT}`);
+APP.listen(PORT, () => {
+    console.log(`Server running on port: ${PORT}`);
 })
