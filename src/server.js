@@ -11,15 +11,15 @@ APP.get('/', (req, res) => {
     res.send(`Hola Gasty! Este es el desafío de la Clase N°6!`)
 })
 
-APP.get('/products', (request, response) => {
-    let { limit } = request.query;
+APP.get('/products', (req, res) => {
+    let { limit } = req.query;
     let productList;
     if (!limit) {
         productList = new ProductManager().getProducts();
     } else {
         productList = new ProductManager().getProductsWithLimit(limit);
     }
-    response.send(productList);
+    res.send(productList);
 });
 
 
