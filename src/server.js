@@ -1,5 +1,6 @@
 import express from 'express';
 import ProductManager from './productManager.js';
+import path from 'path';
 
 const APP = express();
 const PORT = 8080;
@@ -8,6 +9,7 @@ APP.use(express.urlencoded({ extended: true }));
 APP.use(express.json());
 
 APP.get('/', (req, res) => {
+    console.log(__dirname);
     res.send(`Hola Gasty! Este es el desafío de la Clase N°6!`)
 })
 
@@ -17,7 +19,7 @@ APP.get('/products', (req, res) => {
     if (!limit) {
         productList = new ProductManager().getProducts();
     } else {
-        productList = new ProductManager().getProductsWithLimit(limit);
+        productList = new ProductManager().getProducts(limit);
     }
     res.send(productList);
 });
