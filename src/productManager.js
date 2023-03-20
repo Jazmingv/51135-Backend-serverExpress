@@ -1,10 +1,15 @@
 import fs from "fs";
-import path from "path";
-const file = __dirname + './files/products.json';
+import {fileURLToPath} from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const file = __dirname + '/files/products.json';
 
 export default class ProductManager {
-  constructor(filePath) {
-    this.filePath = filePath;
+  constructor() {
+    this.filePath = file;
   }
 
   static id = 0;
@@ -22,8 +27,8 @@ export default class ProductManager {
       return this.products;
     } else {
       let productsArray = [];
-      for (i = 0; i < limit; i++) {
-        productsArray.push(this.products[i + 1]);
+      for (let i = 0; i < limit; i++) {
+        productsArray.push(this.products[i]);
       }
       return productsArray;
     }
